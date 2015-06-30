@@ -1,6 +1,6 @@
 package apfelmann.outlawz_app;
 
-import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
 
     //Anlegen der Variabeln
@@ -18,8 +18,9 @@ public class MainActivity extends Activity {
     private Button  buttontimer;
     private Button  buttondatenbank;
     private Button  buttonkalender;
-    private Button buttonmenue;
+    private Button  buttonmenü;
     private View    guides;
+    sss
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,26 @@ public class MainActivity extends Activity {
         buttontimer =   (Button)    findViewById(R.id.buttontimer);
         buttondatenbank = (Button)  findViewById(R.id.buttondatenbank);
         buttonkalender = (Button) findViewById(R.id.buttonkalender);
-        buttonmenue = (Button) findViewById(R.id.buttonmenue);
+        buttonmenü = (Button) findViewById(R.id.buttonmenü);
+
+        private void onClick(View knopfdrück){
+
+
+
+    }
+
     }
 
 
-    private void onClick(View knopfdrueck) {
 
-    }
+
+
+
+
+
+
+
+
 
 
 
