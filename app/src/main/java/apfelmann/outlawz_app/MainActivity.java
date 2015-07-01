@@ -69,3 +69,5 @@ public class MainActivity extends Activity implements OnClickListener{
                  }
     }
 }
+
+Das ist ein Beispielt zum Git verstehen.
