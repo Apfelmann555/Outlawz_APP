@@ -64,7 +64,9 @@
         android:id="@+id/buttonplatz"
         android:layout_below="@+id/buttondatenbank"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/buttondatenbank"
+        android:layout_alignEnd="@+id/buttondatenbank" />
 
     <Button
         android:layout_width="150dp"
