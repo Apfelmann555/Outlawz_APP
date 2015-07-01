@@ -2,8 +2,8 @@
     <string name="app_name">Outlawz_APP</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="menü">Menü</string>
-    <string name="startmenü">Menü</string>
+    <string name="menue">Menü</string>
+    <string name="startmenue">Menü</string>
     <string name="willkommen">Herzlich Willkommen zur OutlawzApp</string>
 
 

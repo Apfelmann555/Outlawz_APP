@@ -70,7 +70,7 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:text="Menü"
-        android:id="@+id/buttonmenü"
+        android:id="@+id/buttonmenue"
         android:layout_alignBottom="@+id/buttonplatz"
         android:layout_alignLeft="@+id/buttonkalender"
         android:layout_alignStart="@+id/buttonplatz" />
