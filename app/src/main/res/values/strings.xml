@@ -6,7 +6,8 @@
     <string name="startmenue">Menü</string>
     <string name="willkommen">Herzlich Willkommen zur OutlawzApp</string>
     <string name="title_activity_timer_">Timer_Activity</string>
-
-
-
+    <string name="timer_activity_toptext">Timer und Stopuhren</string>
+    <string name="timer_activity_fischen">Fischen</string>
+    <string name="timer_activity_bade">Badenskills</string>
+    <string name="timer_activity_kampf">Kampf</string>
 </resources>
