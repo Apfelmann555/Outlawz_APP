@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.Timer;
 
 
-public class MainActivity extends Activity implements OnClickListener{
+public class MainActivity extends Activity implements OnClickListener {
 
 
     //Anlegen der Variabeln
@@ -39,6 +39,7 @@ public class MainActivity extends Activity implements OnClickListener{
         buttondatenbank = (Button) findViewById(R.id.buttondatenbank);
         buttonkalender = (Button) findViewById(R.id.buttonkalender);
         buttonmenue = (Button) findViewById(R.id.buttonmenue);
+
         buttontimer.setOnClickListener(this);
 
     }
@@ -47,25 +48,21 @@ public class MainActivity extends Activity implements OnClickListener{
         int kg = v.getId();
 
 
-        if(kg == R.id.buttontimer){
+        if (kg == buttontimer.getId()) {
             Intent Intent_timer = new Intent(MainActivity.this, Timer_Activity.class);
             startActivity(Intent_timer);
+        } else if (kg == buttonguides.getId()) {
+            //Intent Intent_guides= new Intent (MainActivity.this, Guides_Activity.class );
+            //startActivity(Intent_guides);
+        } else if (kg == buttondatenbank.getId()) {
+            //Intent Intent_datenbank= new Intent(MainActivity.this, Datanbank_Activity.class);
+            //startActivity(Intent_datenbank);
+        } else if (kg == buttonkalender.getId()) {
+            //Intent Intent_kalender= new Intent(MainActivity.this, Kalender_Activity.clss);
+            //startActivity(Intent_kalender);
+        } else if (kg == buttonmenue.getId()) {
+            //Intent Intent_menue = new Intent(MainActivity.this, Menue_Activity.class);
+            //startActivity(Intent_menue);
         }
-                else if(kg == R.id.buttonguides){
-                //Intent Intent_guides= new Intent (MainActivity.this, Guides_Activity.class );
-                //startActivity(Intent_guides);
-                    }
-                else if(kg == R.id.buttondatenbank){
-                //Intent Intent_datenbank= new Intent(MainActivity.this, Datanbank_Activity.class);
-                //startActivity(Intent_datenbank);
-                    }
-                else if(kg==R.id.buttonkalender){
-                //Intent Intent_kalender= new Intent(MainActivity.this, Kalender_Activity.clss);
-                //startActivity(Intent_kalender);
-                    }
-                else if(kg==R.id.buttonmenue){
-                //Intent Intent_menue = new Intent(MainActivity.this, Menue_Activity.class);
-                //startActivity(Intent_menue);
-                 }
     }
 }
