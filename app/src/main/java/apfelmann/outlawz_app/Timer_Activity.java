@@ -53,6 +53,11 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
             startActivity(intent_at);
 
         }
+        else if (kg == R.id.timer_activity_kampf){
+
+           Intent intent_at = new Intent (Timer_Activity.this , Kampf_Activity.class);
+            startActivity(intent_at);
+        }
 
 
 

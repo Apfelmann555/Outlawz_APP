@@ -7,12 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Bade_Activity extends Activity {
+public class Kampf_Activity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bade_);
+        setContentView(R.layout.activity_kampf_);
     }
 
 
