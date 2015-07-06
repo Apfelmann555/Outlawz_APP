@@ -10,4 +10,7 @@
     <string name="timer_activity_fischen">Fischen</string>
     <string name="timer_activity_bade">Badenskills</string>
     <string name="timer_activity_kampf">Kampf</string>
+    <string name="title_activity_fischen__activitie">Fischen_Activitie</string>
+    <string name="title_activity_fischen_">Fischen_Activity</string>
+    <string name="title_activity_bade_">Bade_Activity</string>
 </resources>

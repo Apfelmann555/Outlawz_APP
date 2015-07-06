@@ -20,6 +20,18 @@
             android:name=".Timer_Activity"
             android:label="@string/title_activity_timer_" >
         </activity>
+        <activity
+            android:name=".Fischen_Activitie"
+            android:label="@string/title_activity_fischen__activitie" >
+        </activity>
+        <activity
+            android:name=".Fischen_Activity"
+            android:label="@string/title_activity_fischen_" >
+        </activity>
+        <activity
+            android:name=".Bade_Activity"
+            android:label="@string/title_activity_bade_" >
+        </activity>
     </application>
 
 </manifest>
