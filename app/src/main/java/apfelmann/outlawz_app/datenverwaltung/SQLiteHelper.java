@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 
+import java.util.ArrayList;
+
 public class SQLiteHelper extends SQLiteOpenHelper{
     private static final String DBNAME = "outlawzdb";
     private static final String TABLENAME = "timer";
@@ -27,8 +29,13 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.execSQL(command);
     }
 
-            //Abrufen von Daten.
-            //ist das selbe wie Select From "spaltennamen" where "Auswahlwert"
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // BRAUCHEN WIR NICHT!
+    }
+
+    //Abrufen von Daten.
+    //ist das selbe wie Select From "spaltennamen" where "Auswahlwert"
     public Cursor query(String[] spaltennamen, String where,
                         String[]auswahlwert){
 
@@ -41,20 +48,32 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
     }
 
-
-
-
-
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // BRAUCHEN WIR NICHT!
-    }
-
-    public int getID() {
+    /**
+     * Ließt alle IDs aus der SQLite Datenbank aus und gibt sie als ArrayList zurück.
+     *
+     * @return Eine Liste mit allen IDs.
+     */
+    public ArrayList<Integer> getIDs() {
+        // Verwendbare Datenbank wird abgefragt
         SQLiteDatabase db = this.getWritableDatabase();
-        // TODO
-        return 0;
+        // Erstellen einer Liste zum Abspeichern der IDs
+        ArrayList<Integer> al = new ArrayList<>();
+
+        // Query / Abfrage der Werte an den server
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLENAME, null);
+        // Alternative zur oberen Abfrage:
+        // Cursor c = db.query(TABLENAME, new String[] {KEY_ID}, null, null, null, null, null);
+
+        // Durchgehen aller Ergebnisse
+        while(c != null && c.moveToNext()) {
+            // Abspeichern des Ergebnisses in die Liste
+            al.add(c.getInt(0));
+        }
+        // Schließen der Verbindungen
+        c.close();
+        db.close();
+        // Rückgabe der Werte / IDs
+        return al;
     }
 
     public int getTimeStamp() {
@@ -67,5 +86,26 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         // TODO
         return "";
+    }
+
+    /**
+     * Bekommt ContentValues übergeben, welche in die Datenbank gespeichert werden.
+     *
+     * @param cv Die Werte zum Abspeichern in die Datenbank.
+     * @return true wenn die Daten korrekt abgespeichert wurden.
+     */
+    public boolean insertDataSet(ContentValues cv) {
+        // Verwendbare Datenbank wird abgefragt
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Daten werden abgespeichert.
+        long check = db.insert(TABLENAME, null, cv);
+        // Schlieen der Verbindung.
+        db.close();
+        // Wenn check == -1 ist beim Abspeichern was schief gelaufen.
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
