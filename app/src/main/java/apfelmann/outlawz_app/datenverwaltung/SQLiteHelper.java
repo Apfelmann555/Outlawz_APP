@@ -1,8 +1,11 @@
 package apfelmann.outlawz_app.datenverwaltung;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
 
 public class SQLiteHelper extends SQLiteOpenHelper{
     private static final String DBNAME = "outlawzdb";
@@ -23,6 +26,25 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 + KEY_DESC + "VARCHAR(20) NOT NULL);";
         db.execSQL(command);
     }
+
+            //Abrufen von Daten.
+            //ist das selbe wie Select From "spaltennamen" where "Auswahlwert"
+    public Cursor query(String[] spaltennamen, String where,
+                        String[]auswahlwert){
+
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        qb.setTables("timer");
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c =qb.query(db, spaltennamen, where, auswahlwert, null, null, null);
+        return c;
+
+
+    }
+
+
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
