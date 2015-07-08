@@ -2,6 +2,7 @@ package apfelmann.outlawz_app.datenverwaltung;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -34,25 +35,11 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         // BRAUCHEN WIR NICHT!
     }
 
-    //Abrufen von Daten.
-    //ist das selbe wie Select From "spaltennamen" where "Auswahlwert"
-    public Cursor query(String[] spaltennamen, String where,
-                        String[]auswahlwert){
-
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        qb.setTables("timer");
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor c =qb.query(db, spaltennamen, where, auswahlwert, null, null, null);
-        return c;
-
-
-    }
-
-    /**
+        /**
      * Ließt alle IDs aus der SQLite Datenbank aus und gibt sie als ArrayList zurück.
      *
      * @return Eine Liste mit allen IDs.
-     */
+     **/
     public ArrayList<Integer> getIDs() {
         // Verwendbare Datenbank wird abgefragt
         SQLiteDatabase db = this.getWritableDatabase();
@@ -60,7 +47,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         ArrayList<Integer> al = new ArrayList<>();
 
         // Query / Abfrage der Werte an den server
-        Cursor c = db.rawQuery("SELECT * FROM " + TABLENAME, null);
+        Cursor c = db.rawQuery("SELECT " + KEY_ID + " FROM " + TABLENAME, null);
         // Alternative zur oberen Abfrage:
         // Cursor c = db.query(TABLENAME, new String[] {KEY_ID}, null, null, null, null, null);
 
@@ -78,13 +65,28 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
     public int getTimeStamp() {
         SQLiteDatabase db = this.getWritableDatabase();
-        // TODO
+        //neues Array wird erstellt
+        ArrayList<Integer> als = new ArrayList<>();
+        //ABFRAGE der Stamps von der Tabelle
+        Cursor c = db.rawQuery("SELECT " +KEY_TIMESTAMP + " FROM " + TABLENAME, null);
+        while(c != null && c.moveToNext()){
+        //abspeichern
+            als.add(c.getInt(0));
+        }
+        c.close();
+        db.close();
         return 0;
     }
 
     public String getDescription() {
         SQLiteDatabase db = this.getWritableDatabase();
-        // TODO
+        ArrayList ald = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME, null);
+        while(c != null && c.moveToNext()){
+            ald.add(c.getString(0));
+            }
+        c.close();
+        db.close();
         return "";
     }
 
