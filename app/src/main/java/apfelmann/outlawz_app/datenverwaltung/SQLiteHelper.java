@@ -63,28 +63,26 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return al;
     }
 
-    public int getTimeStamp() {
+    public int getTimeStamp(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        //neues Array wird erstellt
-        ArrayList<Integer> als = new ArrayList<>();
+        int ts = 0;
         //ABFRAGE der Stamps von der Tabelle
-        Cursor c = db.rawQuery("SELECT " +KEY_TIMESTAMP + " FROM " + TABLENAME, null);
-        while(c != null && c.moveToNext()){
-        //abspeichern
-            als.add(c.getInt(0));
+        Cursor c = db.rawQuery("SELECT " + KEY_TIMESTAMP + " FROM " + TABLENAME + " WHERE " + KEY_ID + "=?", new String[] {id+""});
+        if(c.moveToFirst()) {
+            ts = c.getInt(0);
         }
         c.close();
         db.close();
-        return 0;
+        return ts;
     }
 
-    public String getDescription() {
+    public String getDescription(int id) {
+        String desc = "";
         SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList ald = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME, null);
-        while(c != null && c.moveToNext()){
-            ald.add(c.getString(0));
-            }
+        Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME + " WHERE " + KEY_ID + "=?", new String[] {id+""});
+        if(c != null && c.moveToNext()){
+            desc = c.getString(0);
+        }
         c.close();
         db.close();
         return "";
