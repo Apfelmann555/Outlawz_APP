@@ -63,7 +63,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return al;
     }
 
-    public int getTimeStamp() {
+    public ArrayList<Integer> getTimeStamp() {
         SQLiteDatabase db = this.getWritableDatabase();
         //neues Array wird erstellt
         ArrayList<Integer> als = new ArrayList<>();
@@ -75,10 +75,10 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
         c.close();
         db.close();
-        return 0;
+        return als;
     }
 
-    public String getDescription() {
+    public ArrayList<Integer> getDescription() {
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList ald = new ArrayList<>();
         Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME, null);
@@ -87,7 +87,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             }
         c.close();
         db.close();
-        return "";
+        return ald;
     }
 
     /**
@@ -111,3 +111,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
     }
 }
+
+
+
