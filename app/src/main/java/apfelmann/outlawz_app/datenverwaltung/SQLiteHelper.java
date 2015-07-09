@@ -78,9 +78,9 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return als;
     }
 
-    public ArrayList<Integer> getDescription() {
+    public ArrayList<String> getDescription() {
         SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList ald = new ArrayList<>();
+        ArrayList<String> ald = new ArrayList<>();
         Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME, null);
         while(c != null && c.moveToNext()){
             ald.add(c.getString(0));
