@@ -67,6 +67,7 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
 
     }
 
+
     // TODO Timestamp in datenbank mit beschr. speichern
     // TODO View anschließend anlegen
 
