@@ -63,29 +63,31 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return al;
     }
 
-    public int getTimeStamp(int id) {
+    public ArrayList<Integer> getTimeStamp() {
         SQLiteDatabase db = this.getWritableDatabase();
-        int ts = 0;
+        //neues Array wird erstellt
+        ArrayList<Integer> als = new ArrayList<>();
         //ABFRAGE der Stamps von der Tabelle
-        Cursor c = db.rawQuery("SELECT " + KEY_TIMESTAMP + " FROM " + TABLENAME + " WHERE " + KEY_ID + "=?", new String[] {id+""});
-        if(c.moveToFirst()) {
-            ts = c.getInt(0);
+        Cursor c = db.rawQuery("SELECT " +KEY_TIMESTAMP + " FROM " + TABLENAME, null);
+        while(c != null && c.moveToNext()){
+        //abspeichern
+            als.add(c.getInt(0));
         }
         c.close();
         db.close();
-        return ts;
+        return als;
     }
 
-    public String getDescription(int id) {
-        String desc = "";
+    public ArrayList<String> getDescription() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME + " WHERE " + KEY_ID + "=?", new String[] {id+""});
-        if(c != null && c.moveToNext()){
-            desc = c.getString(0);
-        }
+        ArrayList<String> ald = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT " + KEY_DESC + " FROM " + TABLENAME, null);
+        while(c != null && c.moveToNext()){
+            ald.add(c.getString(0));
+            }
         c.close();
         db.close();
-        return "";
+        return ald;
     }
 
     /**
@@ -109,3 +111,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
     }
 }
+
+
+
