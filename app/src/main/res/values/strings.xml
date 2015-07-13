@@ -15,4 +15,9 @@
     <string name="title_activity_bade_">Bade_Activity</string>
     <string name="title_activity_kampf_">Kampf_Activity</string>
     <string name="tvfischen">Bitte gib die gewünschte zeit in Minuten ein.</string>
+    <string name="bt1">GO!</string>
+    <string name="timer_activity_anleitung">Bitte Klickt auf  "Erstellen" um ein
+                    neuen Timer zu erstellen</string>
+    <string name="bterstellen">Erstellen</string>
+
 </resources>

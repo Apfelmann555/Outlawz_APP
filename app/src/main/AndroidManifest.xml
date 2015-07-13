@@ -28,14 +28,6 @@
             android:name=".Fischen_Activity"
             android:label="@string/title_activity_fischen_" >
         </activity>
-        <activity
-            android:name=".Bade_Activity"
-            android:label="@string/title_activity_bade_" >
-        </activity>
-        <activity
-            android:name=".Kampf_Activity"
-            android:label="@string/title_activity_kampf_" >
-        </activity>
     </application>
 
 </manifest>

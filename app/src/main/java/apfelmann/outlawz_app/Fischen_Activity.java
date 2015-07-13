@@ -25,16 +25,28 @@ public class Fischen_Activity extends Activity
 
         NumberPicker np = (NumberPicker) findViewById(R.id.uhr);
 
-        np.setOnValueChangedListener(new OnValueChangeListener()
-        {
+        np.setOnValueChangedListener(new OnValueChangeListener() {
             public void onValueChange(NumberPicker picker, int oldVal,
-                                      int newVal)
-            {
+                                      int newVal) {
                 tv.setText(String.valueOf(newVal));
             }
         });
 
-        np.setMaxValue(100);
+        np.setMaxValue(180);
         np.setMinValue(0);
+
+
+
+        }
+
     }
+
+
+
+
+
+
+
+
+
 }

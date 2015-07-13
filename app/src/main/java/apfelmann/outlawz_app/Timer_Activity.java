@@ -33,15 +33,11 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         sqlh = new SQLiteHelper(this);
 
         //Zuweisen der XML Objekte an unsere Variabeln
-        timer_activity_fischen = (Button) findViewById (R.id.timer_activity_fischen);
-        timer_activity_bade = (Button) findViewById(R.id.timer_activity_bade);
-        timer_activity_kampf = (Button) findViewById(R.id.timer_activity_kampf);
         timer_activity_toptext = (TextView) findViewById(R.id.timer_activity_toptext);
 
         // Zuweisen der onClicklistener für die Funktionalität der Knöpfe.
         timer_activity_fischen.setOnClickListener(this);
-        timer_activity_bade.setOnClickListener(this);
-        timer_activity_kampf.setOnClickListener(this);
+
 
 
     }
@@ -50,22 +46,38 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
     public void onClick(View button) {
         int kg = button.getId();
 
-        if(kg == R.id.timer_activity_fischen){
 
             //Intent intent_at = new Intent(Timer_Activity.this,Fischen_Activity.class );
             //startActivity(intent_at);
             startActivity(new Intent(this, Fischen_Activity.class));
         }
-        else if(kg == R.id.timer_activity_bade){
-            startActivity(new Intent(this, Bade_Activity.class));
-        }
-        else if (kg == R.id.timer_activity_kampf){
-            startActivity(new Intent(this, Kampf_Activity.class));
-        }
 
 
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // TODO Timestamp in datenbank mit beschr. speichern
