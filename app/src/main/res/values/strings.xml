@@ -19,5 +19,6 @@
     <string name="timer_activity_anleitung">Bitte Klickt auf  "Erstellen" um ein
                     neuen Timer zu erstellen</string>
     <string name="bterstellen">Erstellen</string>
-
+    <string name="custom_dialog_beschreibung">Bitte Beschreibung angeben</string>
+    <string name="speichern">Save</string>
 </resources>

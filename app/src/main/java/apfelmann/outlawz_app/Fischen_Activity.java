@@ -40,13 +40,3 @@ public class Fischen_Activity extends Activity
         }
 
     }
-
-
-
-
-
-
-
-
-
-}

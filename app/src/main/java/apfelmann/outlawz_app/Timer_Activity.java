@@ -1,6 +1,7 @@
 package apfelmann.outlawz_app;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,12 +46,14 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View button) {
         int kg = button.getId();
-
-
-            //Intent intent_at = new Intent(Timer_Activity.this,Fischen_Activity.class );
-            //startActivity(intent_at);
-            startActivity(new Intent(this, Fischen_Activity.class));
-        }
+        Dialog dia = new Dialog(this);
+        dia.setContentView(R.layout.custom_dialog);
+        dia.setTitle("Neuer Timer!");
+        Button dialogButton = (Button) findViewById(R.id.dialog_button_save);
+        dialogButton.setOnClickListener( v -> dia.dismiss());
+        dia.show();
+        //startActivity(new Intent(this, Fischen_Activity.class));
+    }
 
 
 
