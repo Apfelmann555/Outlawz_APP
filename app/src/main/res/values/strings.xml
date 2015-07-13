@@ -14,4 +14,5 @@
     <string name="title_activity_fischen_">Fischen_Activity</string>
     <string name="title_activity_bade_">Bade_Activity</string>
     <string name="title_activity_kampf_">Kampf_Activity</string>
+    <string name="tvfischen">Bitte gib die gewünschte zeit in Minuten ein.</string>
 </resources>
