@@ -2,6 +2,7 @@ package apfelmann.outlawz_app;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,12 +18,10 @@ import apfelmann.outlawz_app.datenverwaltung.SQLiteHelper;
 
 public class Timer_Activity extends Activity implements View.OnClickListener {
 
-
     //Anlegen der Variablen
-    private Button  timer_activity_fischen;
-    private Button  timer_activity_bade;
-    private Button  timer_activity_kampf;
+    private Button  create_timer;
     private TextView timer_activity_toptext;
+    private Dialog dia;
 
     private SQLiteHelper sqlh;
 
@@ -32,26 +31,40 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_timer_);
 
         sqlh = new SQLiteHelper(this);
+        dia = new Dialog(this);
+        dia.setContentView(R.layout.custom_dialog);
+        dia.setTitle("Neuer Timer!");
+        // TODO Anpassen des Dialogfensters (zu Breit, nicht alle Views vorhanden)
+        // TODO Set NumberPicker numbers: h, min, sec
+
 
         //Zuweisen der XML Objekte an unsere Variabeln
         timer_activity_toptext = (TextView) findViewById(R.id.timer_activity_toptext);
+        create_timer = (Button) findViewById(R.id.bterstellen);
 
         // Zuweisen der onClicklistener für die Funktionalität der Knöpfe.
-        timer_activity_fischen.setOnClickListener(this);
-
-
-
+        create_timer.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View button) {
+        // TODO Datenbank: Datensatz anlegen
+        // TODO ID des Datensatzen bekommen
+        // TODO Neue View anlegen mit ID als id
+        // TODO Countdown starten
+
         int kg = button.getId();
-        Dialog dia = new Dialog(this);
-        dia.setContentView(R.layout.custom_dialog);
-        dia.setTitle("Neuer Timer!");
-        Button dialogButton = (Button) findViewById(R.id.dialog_button_save);
-        dialogButton.setOnClickListener( v -> dia.dismiss());
-        dia.show();
+        switch(kg) {
+            case R.id.bterstellen:
+                Button dialogButton = (Button) dia.findViewById(R.id.dialog_button_save);
+                dialogButton.setOnClickListener(this);
+                dia.show();
+                break;
+            case R.id.dialog_button_save:
+                dia.dismiss();
+                break;
+        }
+
         //startActivity(new Intent(this, Fischen_Activity.class));
     }
 
