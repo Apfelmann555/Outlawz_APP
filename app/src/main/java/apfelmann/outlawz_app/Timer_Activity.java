@@ -2,17 +2,15 @@ package apfelmann.outlawz_app;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import java.awt.font.TextAttribute;
+import java.util.Calendar;
 
 import apfelmann.outlawz_app.datenverwaltung.SQLiteHelper;
 
@@ -103,6 +101,27 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
      */
     private int getSecondsFromDialog() {
         return ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).getValue();
+    }
+
+    public int berechnungtime; {
+        // Werte bekommen
+        int h = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_h)).getValue();
+        int min = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_min)).getValue();
+        int sec = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).getValue();
+        // Gibt momentanes Date aus
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, h);
+        calendar.add(Calendar.MINUTE, min);
+        calendar.add(Calendar.SECOND, sec);
+        int timestamp = (int) calendar.getTime().getTime() / 1000;
+        //int timestamp = calendar.getTime() / 1000;
+
+        ContentValues cv = new ContentValues();
+        cv.put(SQLiteHelper.getKeyDesc(), ((EditText) dia.findViewById(R.id.dialog_edit_desc)).getText();
+        cv.put(SQLiteHelper.getKeyTimestamp(), timestamp);
+
+        sqlh.insertDataSet(cv);
+        //                 ^^ wird übergeben
     }
 
     // TODO Timestamp in datenbank mit beschr. speichern

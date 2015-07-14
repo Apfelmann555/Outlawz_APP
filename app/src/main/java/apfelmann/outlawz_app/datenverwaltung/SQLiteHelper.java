@@ -2,11 +2,9 @@ package apfelmann.outlawz_app.datenverwaltung;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 
 import java.util.ArrayList;
 
@@ -108,5 +106,17 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         } else {
             return true;
         }
+    }
+
+    public static String getKeyId() {
+        return KEY_ID;
+    }
+
+    public static String getKeyTimestamp() {
+        return KEY_TIMESTAMP;
+    }
+
+    public static String getKeyDesc() {
+        return KEY_DESC;
     }
 }
