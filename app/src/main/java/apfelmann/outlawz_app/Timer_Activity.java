@@ -13,6 +13,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.awt.font.TextAttribute;
+import java.util.Calendar;
 
 import apfelmann.outlawz_app.datenverwaltung.SQLiteHelper;
 
@@ -44,8 +45,6 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).setMinValue(23);
 
 
-        // TODO Anpassen des Dialogfensters (zu Breit, nicht alle Views vorhanden)
-        // TODO Set NumberPicker numbers: h, min, sec
 
 
         //Zuweisen der XML Objekte an unsere Variabeln
@@ -58,6 +57,8 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View button) {
+
+
         // TODO Datenbank: Datensatz anlegen
         // TODO ID des Datensatzen bekommen
         // TODO Neue View anlegen mit ID als id
@@ -77,6 +78,33 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
 
         //startActivity(new Intent(this, Fischen_Activity.class));
     }
+
+    public int berechnungtime; {
+        // Werte bekommen
+        int h = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_h)).getValue();
+        int min = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_min)).getValue();
+        int sec = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).getValue();
+        // Gibt momentanes Date aus
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, h);
+        calendar.add(Calendar.MINUTE, min);
+        calendar.add(Calendar.SECOND, sec);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Liest den Wert aus dem Dialogsfenster aus und gibt ihn zurück;
