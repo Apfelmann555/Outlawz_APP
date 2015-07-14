@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.awt.font.TextAttribute;
@@ -34,6 +35,15 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         dia = new Dialog(this);
         dia.setContentView(R.layout.custom_dialog);
         dia.setTitle("Neuer Timer!");
+        // Setzen der min und max-Werte
+        ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).setMinValue(0);
+        ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).setMinValue(59);
+        ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_min)).setMinValue(0);
+        ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_min)).setMinValue(59);
+        ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_h)).setMinValue(0);
+        ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).setMinValue(23);
+
+
         // TODO Anpassen des Dialogfensters (zu Breit, nicht alle Views vorhanden)
         // TODO Set NumberPicker numbers: h, min, sec
 
@@ -68,33 +78,32 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         //startActivity(new Intent(this, Fischen_Activity.class));
     }
 
+    /**
+     * Liest den Wert aus dem Dialogsfenster aus und gibt ihn zurück;
+     *
+     * @return Die Anzahl an Stunden, welche vom Benutzer ausgewählt wurden
+     */
+    private int getHoursFromDialog() {
+        return ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_h)).getValue();
+    }
 
+    /**
+     * Liest den Wert aus dem Dialogsfenster aus und gibt ihn zurück;
+     *
+     * @return Die Anzahl an Minuten, welche vom Benutzer ausgewählt wurden
+     */
+    private int getMinutesFromDialog() {
+        return ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_min)).getValue();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Liest den Wert aus dem Dialogsfenster aus und gibt ihn zurück;
+     *
+     * @return Die Anzahl an Sekunden, welche vom Benutzer ausgewählt wurden
+     */
+    private int getSecondsFromDialog() {
+        return ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).getValue();
+    }
 
     // TODO Timestamp in datenbank mit beschr. speichern
     // TODO View anschließend anlegen
