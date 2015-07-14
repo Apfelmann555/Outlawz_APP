@@ -11,6 +11,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Calendar;
 
 import apfelmann.outlawz_app.datenverwaltung.SQLiteHelper;
 
@@ -42,8 +43,6 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).setMinValue(23);
 
 
-        // TODO Anpassen des Dialogfensters (zu Breit, nicht alle Views vorhanden)
-        // TODO Set NumberPicker numbers: h, min, sec
 
 
         //Zuweisen der XML Objekte an unsere Variabeln
@@ -56,6 +55,8 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View button) {
+
+
         // TODO Datenbank: Datensatz anlegen
         // TODO ID des Datensatzen bekommen
         // TODO Neue View anlegen mit ID als id
@@ -117,7 +118,7 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         //int timestamp = calendar.getTime() / 1000;
 
         ContentValues cv = new ContentValues();
-        cv.put(SQLiteHelper.getKeyDesc(), ((EditText) dia.findViewById(R.id.dialog_edit_desc)).getText();
+        cv.put(SQLiteHelper.getKeyDesc(), ((EditText) dia.findViewById(R.id.dialog_edit_desc)).getText().toString());
         cv.put(SQLiteHelper.getKeyTimestamp(), timestamp);
 
         sqlh.insertDataSet(cv);
