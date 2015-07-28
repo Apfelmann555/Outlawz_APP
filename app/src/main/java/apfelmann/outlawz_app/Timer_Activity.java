@@ -57,11 +57,6 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
     public void onClick(View button) {
 
 
-        // TODO Datenbank: Datensatz anlegen
-        // TODO ID des Datensatzen bekommen
-        // TODO Neue View anlegen mit ID als id
-        // TODO Countdown starten
-
         int kg = button.getId();
         switch(kg) {
             case R.id.bterstellen:
@@ -70,6 +65,13 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
                 dia.show();
                 break;
             case R.id.dialog_button_save:
+                                       
+                this.berechnungtime();
+
+                // TODO Datenbank: Datensatz anlegen
+                // TODO ID des Datensatzen bekommen
+                // TODO Neue View anlegen mit ID als id
+                // TODO Countdown starten
                 dia.dismiss();
                 break;
         }
@@ -104,7 +106,7 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         return ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_sec)).getValue();
     }
 
-    public int berechnungtime; {
+    public int berechnungtime() {
         // Werte bekommen
         int h = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_h)).getValue();
         int min = ((NumberPicker) dia.findViewById(R.id.dialog_numberpicker_min)).getValue();
@@ -123,6 +125,10 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
 
         sqlh.insertDataSet(cv);
         //                 ^^ wird übergeben
+
+        sqlh.getIdByTimetamp(cv.getAsInteger(SQLiteHelper.getKeyTimestamp()));
+
+
     }
 
     // TODO Timestamp in datenbank mit beschr. speichern

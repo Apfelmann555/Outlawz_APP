@@ -61,6 +61,26 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return al;
     }
 
+    /**
+     *
+     * @param ts
+     * @return wenn -1 dann kein wert vorhanden.
+     */
+    public int getIdByTimetamp (int ts){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select " + KEY_ID + " From " + TABLENAME + " Where " + KEY_TIMESTAMP + "=?";
+        Cursor c =db.rawQuery(query, new String[] {ts+""});
+
+        int id=-1;
+        if (c != null && c.moveToNext()){
+            id = c.getInt(0);
+
+        }
+        return id;
+
+    }
+
     public int getTimeStamp(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         int ts = -1;
