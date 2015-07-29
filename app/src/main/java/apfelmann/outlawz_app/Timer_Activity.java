@@ -1,5 +1,6 @@
 package apfelmann.outlawz_app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -126,9 +128,10 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
         sqlh.insertDataSet(cv);
         //                 ^^ wird übergeben
 
-        sqlh.getIdByTimetamp(cv.getAsInteger(SQLiteHelper.getKeyTimestamp()));
+        int id = sqlh.getIdByTimetamp(cv.getAsInteger(SQLiteHelper.getKeyTimestamp()));
 
 
+        return 0;
     }
 
     // TODO Timestamp in datenbank mit beschr. speichern
@@ -206,4 +209,15 @@ public class Timer_Activity extends Activity implements View.OnClickListener {
     public int getDaysBetween(int tst_future, int tst_current) {
         return (int) (getDifference(tst_future, tst_current) / (60*60*24));
     }
+
+    public void createView  (ContentValues cv){
+        LinearLayout ll = new LinearLayout(this);
+        ll.setId(cv.getAsInteger(sqlh.getKeyId()));
+
+
+
+
+    }
+
 }
+
